@@ -113,9 +113,9 @@ export default function Chat({algo,messages,setMessages,histories,setHistories,h
         <>
         <div className='flex flex-col-reverse fixed w-screen top-0 left-0 pb-[65px] pl-[530px] h-full w-{full-350px} bg-dark-blue content-end'>
                 <div id="scroll" className="h-screen list-group list-group-flush border-bottom scrollarea overflow-y-scroll scroll-smooth" onScroll={goToBottom}>
-                    {messages.map((m) => {
+                    {messages.map((m,index) => {
                         return (
-                            <div className={'list-group-item list-group-item-action lh-tight h-fit mr-[150px]'}>
+                            <div className={'list-group-item list-group-item-action lh-tight h-fit mr-[150px]'} key={index}>
                                 <div className='grid grid-cols-1 h-tight my-[10px]'>
                                 <div className={'lh-tight w-thight px-4 py-1 rounded-md shadow-md text-justify mx-w-{500px} bg-blue place-self-end'}>
                                     <div className="col-10 mb-1 small text-black">{m.q}</div>
@@ -133,7 +133,7 @@ export default function Chat({algo,messages,setMessages,histories,setHistories,h
         <div className='grid grid-cols-1 fixed bottom-0 h-[65px] w-full pl-[350px] pt-[12px] bg-grey place-items-center'>
             <form className="h-[65px]" onSubmit={submit}>
                 <label></label>
-                <input className="h-[40px] w-[650px] mx-5 rounded-md shadow-md" type="text" id="chat" value={message} onChange={e=> setMessage(e.target.value)}/>
+                <input className="h-[40px] w-[650px] mx-5 rounded-md shadow-md text-black" type="text" id="chat" value={message} onChange={e=> setMessage(e.target.value)}/>
                 <button type="submit" className="bg-slate-500 rounded-md text-black py-1 px-2 shadow-md hover:bg-slate-600">submit</button>
             </form>
         </div>
