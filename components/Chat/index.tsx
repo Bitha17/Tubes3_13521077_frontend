@@ -3,6 +3,8 @@ import { useState,useEffect,use } from 'react'
 import { Message } from '../../pages/index';
 import { History } from '../../pages/index';
 
+const API_URL = process.env.API_URL;
+
 // let chats = new Map<number, Map<number,string>[]>();
 // let chats = new Map<number,string>([
 //     [0,"hELLO"],[1,"csdc"],[0,"adsvfvsvfbdbft"]]);
@@ -34,7 +36,7 @@ export default function Chat({algo,messages,setMessages,histories,setHistories,h
 
     const submit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        await fetch('http://localhost:8000/URL', {
+        await fetch('${API_URL}/URL', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ historyID: historyID, algorithm: algo, isiChat: message })
