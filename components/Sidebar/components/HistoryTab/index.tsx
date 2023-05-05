@@ -2,7 +2,6 @@ import { useState,useEffect } from "react";
 import {Message} from '../../../../pages/index'
 import {History} from '../../../../pages/index'
 
-const API_URL = process.env.API_URL;
 // interface History {
 //     id: number;
 //     chat: string[][];
@@ -18,7 +17,7 @@ export default function HistoryTab({messages, setMessages, histories,setHistorie
     {messages:Message[],setMessages:any; histories:History[], setHistories:any,historyID:number,setHistoryID:any}){
 
     async function fetchAddNewChat(){
-        const res = await fetch('${API_URL}/addNewChat');
+        const res = await fetch('https://gptkw-backend.onrender.com:8000/addNewChat');
         const res1 = await res.json();
         console.log(res1)
         return res1;
