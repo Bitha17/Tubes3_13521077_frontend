@@ -2,6 +2,8 @@ import Sidebar from '../components/Sidebar'
 import Chat from '../components/Chat'
 import { useState } from 'react';
 
+const API_URL = process.env.API_URL;
+
 export interface Message {
     q:string; a:string;
 }
@@ -27,7 +29,7 @@ export default function Home() {
   const [historyID,setHistoryID] = useState(Number);
 
   async function fetchHistory(){
-      const res = await fetch('http://localhost:8000/history');
+      const res = await fetch('${API_URL}/history');
       const res1 = await res.json();
       console.log(res1)
       return res1;
